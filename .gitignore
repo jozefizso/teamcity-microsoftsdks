@@ -1,0 +1,16 @@
+## Java - https://github.com/github/gitignore/blob/master/Java.gitignore
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+## IntelliJ - https://github.com/github/gitignore/blob/master/Global/IntelliJ.gitignore
+*.iml
+*.ipr
+*.iws
+.idea/
+
+## Misc
+out/
