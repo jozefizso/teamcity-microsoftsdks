@@ -4,7 +4,8 @@ import jetbrains.buildServer.util.Bitness;
 import jetbrains.buildServer.util.Win32RegistryAccessor;
 import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AspnetMvcDetector extends SdkDetector {
     private static final Logger LOG = Logger.getLogger(AspnetMvcDetector.class);

@@ -1,241 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="teamcitymicrosoftsdks" default="all">
-  
-  
-  <property file="build.properties"/>
-  <!-- Uncomment the following property if no tests compilation is needed -->
-  <!-- 
-  <property name="skip.tests" value="true"/>
-   -->
-  
-  <!-- Compiler options -->
-  
-  <property name="compiler.debug" value="on"/>
-  <property name="compiler.generate.no.warnings" value="off"/>
-  <property name="compiler.args" value=""/>
-  <property name="compiler.max.memory" value="128m"/>
-  <patternset id="ignored.files">
-    <exclude name="**/CVS/**"/>
-    <exclude name="**/SCCS/**"/>
-    <exclude name="**/RCS/**"/>
-    <exclude name="**/rcs/**"/>
-    <exclude name="**/.DS_Store/**"/>
-    <exclude name="**/.svn/**"/>
-    <exclude name="**/.pyc/**"/>
-    <exclude name="**/.pyo/**"/>
-    <exclude name="**/*.pyc/**"/>
-    <exclude name="**/*.pyo/**"/>
-    <exclude name="**/.git/**"/>
-    <exclude name="**/*.hprof/**"/>
-    <exclude name="**/_svn/**"/>
-    <exclude name="**/.hg/**"/>
-    <exclude name="**/*.lib/**"/>
-    <exclude name="**/*~/**"/>
-    <exclude name="**/__pycache__/**"/>
-    <exclude name="**/.bundle/**"/>
-    <exclude name="**/*.rbc/**"/>
-    <exclude name="**/*.orig/**"/>
-  </patternset>
-  <patternset id="library.patterns">
-    <include name="*.zip"/>
-    <include name="*.apk"/>
-    <include name="*.war"/>
-    <include name="*.egg"/>
-    <include name="*.ear"/>
-    <include name="*.ane"/>
-    <include name="*.swc"/>
-    <include name="*.jar"/>
-  </patternset>
-  <patternset id="compiler.resources">
-    <include name="**/?*.properties"/>
-    <include name="**/?*.xml"/>
-    <include name="**/?*.gif"/>
-    <include name="**/?*.png"/>
-    <include name="**/?*.jpeg"/>
-    <include name="**/?*.jpg"/>
-    <include name="**/?*.html"/>
-    <include name="**/?*.dtd"/>
-    <include name="**/?*.tld"/>
-    <include name="**/?*.ftl"/>
-  </patternset>
-  
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
-  <path id="jdk.classpath.1.6">
-    <fileset dir="${jdk.home.1.6}">
-      <include name="jre/lib/charsets.jar"/>
-      <include name="jre/lib/deploy.jar"/>
-      <include name="jre/lib/javaws.jar"/>
-      <include name="jre/lib/jce.jar"/>
-      <include name="jre/lib/jsse.jar"/>
-      <include name="jre/lib/management-agent.jar"/>
-      <include name="jre/lib/plugin.jar"/>
-      <include name="jre/lib/resources.jar"/>
-      <include name="jre/lib/rt.jar"/>
-      <include name="jre/lib/ext/dnsns.jar"/>
-      <include name="jre/lib/ext/localedata.jar"/>
-      <include name="jre/lib/ext/sunjce_provider.jar"/>
-      <include name="jre/lib/ext/sunmscapi.jar"/>
-      <include name="jre/lib/ext/sunpkcs11.jar"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
-  
-  
-  <!-- Project Libraries -->
-  
-  <path id="library.agent-api.classpath">
-    <pathelement location="${basedir}/libs/agent-api.jar"/>
-    <pathelement location="${basedir}/libs/common-api.jar"/>
-  </path>
-  
-  <path id="library.log4j-1.2.17.classpath">
-    <pathelement location="${basedir}/libs/log4j-1.2.17.jar"/>
-  </path>
-  <!-- Register Custom Compiler Taskdefs -->
-  <property name="javac2.home" value="${idea.home}/lib"/>
-  <path id="javac2.classpath">
-    <pathelement location="${javac2.home}/javac2.jar"/>
-    <pathelement location="${javac2.home}/jdom.jar"/>
-    <pathelement location="${javac2.home}/asm.jar"/>
-    <pathelement location="${javac2.home}/asm-commons.jar"/>
-    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
-  </path>
-  <target name="register.custom.compilers">
-    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
-    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
-  </target>
-  
-  <!-- Modules -->
-  
-  
-  <!-- Module TeamCityMicrosoftSdks -->
-  
-  <dirname property="module.teamcitymicrosoftsdks.basedir" file="${ant.file}"/>
-  
-  
-  <property name="module.jdk.home.teamcitymicrosoftsdks" value="${jdk.home.1.6}"/>
-  <property name="module.jdk.bin.teamcitymicrosoftsdks" value="${jdk.bin.1.6}"/>
-  <property name="module.jdk.classpath.teamcitymicrosoftsdks" value="jdk.classpath.1.6"/>
-  
-  <property name="compiler.args.teamcitymicrosoftsdks" value="${compiler.args}"/>
-  
-  <property name="teamcitymicrosoftsdks.output.dir" value="${module.teamcitymicrosoftsdks.basedir}/out/production/TeamCityMicrosoftSdks"/>
-  <property name="teamcitymicrosoftsdks.testoutput.dir" value="${module.teamcitymicrosoftsdks.basedir}/out/test/TeamCityMicrosoftSdks"/>
-  
-  <path id="teamcitymicrosoftsdks.module.bootclasspath">
-    <!-- Paths to be included in compilation bootclasspath -->
-  </path>
-  
-  <path id="teamcitymicrosoftsdks.module.production.classpath">
-    <path refid="${module.jdk.classpath.teamcitymicrosoftsdks}"/>
-    <path refid="library.agent-api.classpath"/>
-    <path refid="library.log4j-1.2.17.classpath"/>
-  </path>
-  
-  <path id="teamcitymicrosoftsdks.runtime.production.module.classpath">
-    <pathelement location="${teamcitymicrosoftsdks.output.dir}"/>
-    <path refid="library.agent-api.classpath"/>
-    <path refid="library.log4j-1.2.17.classpath"/>
-  </path>
-  
-  <path id="teamcitymicrosoftsdks.module.classpath">
-    <path refid="${module.jdk.classpath.teamcitymicrosoftsdks}"/>
-    <pathelement location="${teamcitymicrosoftsdks.output.dir}"/>
-    <path refid="library.agent-api.classpath"/>
-    <path refid="library.log4j-1.2.17.classpath"/>
-  </path>
-  
-  <path id="teamcitymicrosoftsdks.runtime.module.classpath">
-    <pathelement location="${teamcitymicrosoftsdks.testoutput.dir}"/>
-    <pathelement location="${teamcitymicrosoftsdks.output.dir}"/>
-    <path refid="library.agent-api.classpath"/>
-    <path refid="library.log4j-1.2.17.classpath"/>
-  </path>
-  
-  
-  <patternset id="excluded.from.module.teamcitymicrosoftsdks">
-    <patternset refid="ignored.files"/>
-  </patternset>
-  
-  <patternset id="excluded.from.compilation.teamcitymicrosoftsdks">
-    <patternset refid="excluded.from.module.teamcitymicrosoftsdks"/>
-  </patternset>
-  
-  <path id="teamcitymicrosoftsdks.module.sourcepath">
-    <dirset dir="${module.teamcitymicrosoftsdks.basedir}">
-      <include name="src"/>
-    </dirset>
-  </path>
-  
-  
-  <target name="compile.module.teamcitymicrosoftsdks" depends="compile.module.teamcitymicrosoftsdks.production,compile.module.teamcitymicrosoftsdks.tests" description="Compile module TeamCityMicrosoftSdks"/>
-  
-  <target name="compile.module.teamcitymicrosoftsdks.production" depends="register.custom.compilers" description="Compile module TeamCityMicrosoftSdks; production classes">
-    <mkdir dir="${teamcitymicrosoftsdks.output.dir}"/>
-    <javac2 destdir="${teamcitymicrosoftsdks.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.teamcitymicrosoftsdks}/javac">
-      <compilerarg line="${compiler.args.teamcitymicrosoftsdks}"/>
-      <bootclasspath refid="teamcitymicrosoftsdks.module.bootclasspath"/>
-      <classpath refid="teamcitymicrosoftsdks.module.production.classpath"/>
-      <src refid="teamcitymicrosoftsdks.module.sourcepath"/>
-      <patternset refid="excluded.from.compilation.teamcitymicrosoftsdks"/>
-    </javac2>
-    
-    <copy todir="${teamcitymicrosoftsdks.output.dir}">
-      <fileset dir="${module.teamcitymicrosoftsdks.basedir}/src">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
-    </copy>
-  </target>
-  
-  <target name="compile.module.teamcitymicrosoftsdks.tests" depends="register.custom.compilers,compile.module.teamcitymicrosoftsdks.production" description="compile module TeamCityMicrosoftSdks; test classes" unless="skip.tests"/>
-  
-  <target name="clean.module.teamcitymicrosoftsdks" description="cleanup module">
-    <delete dir="${teamcitymicrosoftsdks.output.dir}"/>
-    <delete dir="${teamcitymicrosoftsdks.testoutput.dir}"/>
-  </target>
-  
-  <target name="init" description="Build initialization">
-    <!-- Perform any build initialization in this target -->
-  </target>
-  
-  <target name="clean" depends="clean.module.teamcitymicrosoftsdks" description="cleanup all"/>
-  
-  <target name="build.modules" depends="init, clean, compile.module.teamcitymicrosoftsdks" description="build all modules"/>
-  
-  <target name="init.artifacts">
-    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.microsoftsdks:jar" value="${basedir}/out/artifacts"/>
-    <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="temp.jar.path.MicrosoftSdks.jar" value="${artifacts.temp.dir}/MicrosoftSdks.jar"/>
-  </target>
-  
-  <target name="artifact.microsoftsdks:jar" depends="init.artifacts, compile.module.teamcitymicrosoftsdks" description="Build &#39;MicrosoftSdks:jar&#39; artifact">
-    <property name="artifact.temp.output.microsoftsdks:jar" value="${artifacts.temp.dir}/MicrosoftSdks_jar"/>
-    <mkdir dir="${artifact.temp.output.microsoftsdks:jar}"/>
-    <jar destfile="${temp.jar.path.MicrosoftSdks.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
-      <zipfileset dir="${teamcitymicrosoftsdks.output.dir}"/>
-      <zipfileset file="${basedir}/libs/log4j-1.2.17.jar"/>
-      <zipfileset file="${basedir}/libs/agent-api.jar"/>
-      <zipfileset file="${basedir}/libs/common-api.jar"/>
-    </jar>
-    <copy file="${temp.jar.path.MicrosoftSdks.jar}" tofile="${artifact.temp.output.microsoftsdks:jar}/MicrosoftSdks.jar"/>
-  </target>
-  
-  <target name="build.all.artifacts" depends="artifact.microsoftsdks:jar" description="Build all artifacts">
-    <mkdir dir="${artifact.output.microsoftsdks:jar}"/>
-    <copy todir="${artifact.output.microsoftsdks:jar}">
-      <fileset dir="${artifact.temp.output.microsoftsdks:jar}"/>
-    </copy>
-    
-    <!-- Delete temporary files -->
-    <delete dir="${artifacts.temp.dir}"/>
-  </target>
-  
-  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+<project name="microsoftsdks-custom-build" default="dist" basedir=".">
+
+    <property name="plugin.name" value="MicrosoftSdks"/>
+
+    <property file="build.properties"/>
+
+    <import file="microsoftsdks.xml"/>
+
+    <property name="dist" value="dist"/>
+    <property name="dist_unpacked" value="${dist}/unpacked"/>
+    <property name="distrib_prep" value="${basedir}/temp/dist_prep"/>
+    <property name="distrib_prep_server" value="${distrib_prep}/server"/>
+    <property name="distrib_prep_agent" value="${distrib_prep}/agent"/>
+    <property name="distrib_prep_agent_jars" value="${distrib_prep_agent}/unpacked"/>
+
+    <target name="build.jar" depends="all">
+        <delete dir="${dist}" quiet="true"/>
+
+        <delete dir="${dist_unpacked}" quiet="true"/>
+        <delete dir="${distrib_prep}" quiet="true"/>
+
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${dist_unpacked}"/>
+
+        <!-- server part -->
+        <echo message="replacing tokens in teamcity-plugin.xml file under ${dist_unpacked}"/>
+
+        <tstamp>
+            <format property="snapshot" pattern="yyyy-dd-MM-HH-mm-ss"/>
+        </tstamp>
+        <condition property="build.number" value="snapshot-${snapshot}" else="${build.number}">
+            <not>
+                <isset property="build.number"/>
+            </not>
+        </condition>
+
+        <echo message="Setting version to: ${build.number}"/>
+        <!-- update all references in teamcity-server-plugin.xml files -->
+        <copy file="${basedir}/teamcity-server-plugin.xml" tofile="${dist_unpacked}/teamcity-plugin.xml"/>
+
+        <replace dir="${dist_unpacked}" summary="true">
+            <include name="**/teamcity-plugin.xml"/>
+
+            <replacefilter token="@Plugin_Version@" value="${build.number}"/>
+        </replace>
+
+        <!-- agent part -->
+        <delete dir="${dist}/agent" quiet="true"/>
+        <mkdir dir="${distrib_prep_agent}"/>
+        <mkdir dir="${distrib_prep_agent_jars}/${plugin.name}/lib"/>
+        <mkdir dir="${dist_unpacked}/agent"/>
+
+        <jar destfile="${distrib_prep_agent_jars}/${plugin.name}/lib/${plugin.name}.jar">
+            <fileset dir="${microsoftsdks.output.dir}"/>
+        </jar>
+
+        <zip destfile="${dist_unpacked}/agent/${plugin.name}.zip">
+            <fileset dir="${distrib_prep_agent_jars}"/>
+        </zip>
+
+
+        <delete dir="${distrib_prep}" quiet="true"/>
+    </target>
+
+    <target name="package" depends="check, build.jar">
+        <delete file="${dist}/${plugin.name}.zip" quiet="true"/>
+        <zip destfile="${dist}/${plugin.name}.zip">
+            <fileset dir="${dist_unpacked}"/>
+        </zip>
+        <echo message="To install the plugin, place '${dist}\${plugin.name}.zip' into '.BuildServer/plugins' directory"/>
+        <echo message="also, copy files from 'application_libs' into '&lt;TeamCity home&gt;/webapps/ROOT/WEB-INF/lib' directory"/>
+    </target>
+
+    <target name="dist" depends="check,all,package"/>
+
+    <target name="check">
+        <condition property="not.configured">
+            <not>
+                <and>
+                    <isset property="path.variable.teamcitydistribution"/>
+                    <length string="${path.variable.teamcitydistribution}" when="greater" length="0"/>
+                    <available file="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib"/>
+                </and>
+            </not>
+        </condition>
+        <fail if="not.configured"
+              message="Please define 'path.variable.teamcitydistribution' property in build.properties file. The property should point to unpacked TeamCity .tar.gz or .exe distribution."/>
+    </target>
+
+    <!-- TeamCity distribution unpacking -->
+    <target name="teamcity_unpack">
+
+        <property name="distribution.dir" value="${basedir}/teamcity-dist"/>
+        <property name="teamcity.tar.gz-location" value="."/>
+
+        <delete dir="${distribution.dir}" quiet="true"/>
+        <mkdir dir="${distribution.dir}"/>
+
+        <untar compression="gzip" dest="${distribution.dir}">
+            <fileset dir="${teamcity.tar.gz-location}">
+                <include name="*.tar.gz"/>
+            </fileset>
+        </untar>
+
+        <move todir="${distribution.dir}">
+            <fileset dir="${distribution.dir}\TeamCity">
+                <include name="**"/>
+            </fileset>
+        </move>
+    </target>
+
 </project>
+
+        

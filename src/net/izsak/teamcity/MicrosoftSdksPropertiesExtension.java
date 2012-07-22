@@ -1,7 +1,5 @@
 package net.izsak.teamcity;
 
-
-import com.sun.istack.internal.NotNull;
 import jetbrains.buildServer.agent.AgentLifeCycleAdapter;
 import jetbrains.buildServer.agent.AgentLifeCycleListener;
 import jetbrains.buildServer.agent.BuildAgent;
@@ -20,7 +18,7 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
 
     private final Win32RegistryAccessor registry;
 
-    public MicrosoftSdksPropertiesExtension(@NotNull final EventDispatcher<AgentLifeCycleListener> events, final Win32RegistryAccessor registry) {
+    public MicrosoftSdksPropertiesExtension(final EventDispatcher<AgentLifeCycleListener> events, final Win32RegistryAccessor registry) {
         this.registry = registry;
         events.addListener(this);
     }
@@ -36,7 +34,7 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
     }
 
     @Override
-    public void beforeAgentConfigurationLoaded(@NotNull final BuildAgent agent) {
+    public void beforeAgentConfigurationLoaded(final BuildAgent agent) {
         final BuildAgentConfiguration config = agent.getConfiguration();
         if (!config.getSystemInfo().isWindows()) {
             return;
@@ -50,6 +48,7 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
         List<SdkDetector> detectors = new ArrayList<SdkDetector>();
         detectors.add(new WindowsAzureSdkDetector(this.registry));
         detectors.add(new WindowsPhoneSdkDetector(this.registry));
+        detectors.add(new AspnetMvcDetector(this.registry));
 
         for (SdkDetector detector : detectors) {
             List<SdkVersion> detectedVersions = detector.detectSdkVersions();
