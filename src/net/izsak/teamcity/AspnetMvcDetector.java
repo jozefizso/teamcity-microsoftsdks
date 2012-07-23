@@ -14,10 +14,10 @@ public class AspnetMvcDetector extends SdkDetector {
 
     static {
         versions = new ArrayList<SdkVersion2>();
-        versions.add(new SdkVersion2("ASPNET_MVC_1", "ASP.NET MVC 1.0", "SOFTWARE\\Wow6432Node\\Microsoft\\ASP.NET\\ASP.NET MVC 1.0"));
-        versions.add(new SdkVersion2("ASPNET_MVC_2", "ASP.NET MVC 2", "SOFTWARE\\Wow6432Node\\Microsoft\\ASP.NET MVC 2\\Runtime"));
-        versions.add(new SdkVersion2("ASPNET_MVC_3", "ASP.NET MVC 3", "SOFTWARE\\Wow6432Node\\Microsoft\\ASP.NET MVC 3\\Runtime"));
-        versions.add(new SdkVersion2("ASPNET_MVC_4", "ASP.NET MVC 4", "SOFTWARE\\Wow6432Node\\Microsoft\\ASP.NET MVC 4\\Runtime"));
+        versions.add(new SdkVersion2("ASPNET_MVC_1", "ASP.NET MVC 1.0", "SOFTWARE\\Microsoft\\ASP.NET\\ASP.NET MVC 1.0"));
+        versions.add(new SdkVersion2("ASPNET_MVC_2", "ASP.NET MVC 2", "SOFTWARE\\Microsoft\\ASP.NET MVC 2\\Runtime"));
+        versions.add(new SdkVersion2("ASPNET_MVC_3", "ASP.NET MVC 3", "SOFTWARE\\Microsoft\\ASP.NET MVC 3\\Runtime"));
+        versions.add(new SdkVersion2("ASPNET_MVC_4", "ASP.NET MVC 4", "SOFTWARE\\Microsoft\\ASP.NET MVC 4\\Runtime"));
     }
 
     private Win32RegistryAccessor registry;
