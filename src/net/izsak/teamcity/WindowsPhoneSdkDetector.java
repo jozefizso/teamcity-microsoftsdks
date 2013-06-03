@@ -11,7 +11,7 @@ public class WindowsPhoneSdkDetector extends SdkDetector {
     private static final Logger LOG = Logger.getLogger(WindowsPhoneSdkDetector.class);
 
     final String basePath = "SOFTWARE\\Microsoft\\Microsoft SDKs\\WindowsPhone\\";
-    final String[] versionsToDetect = new String[] { "7.0", "7.1" };
+    final String[] versionsToDetect = new String[] { "7.0", "7.1", "8.0" };
 
     private Win32RegistryAccessor registry;
 
@@ -37,17 +37,25 @@ public class WindowsPhoneSdkDetector extends SdkDetector {
     }
 
     private SdkVersion detectSdkVersion(String version){
-        // sample key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v7.0
-        // sample key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v7.0\Install Path
+        // sample key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v7.1
+        // sample key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v7.1\ImageVersion
+        // sample key: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\WindowsPhone\v7.1\Install Path
         final String versionPath = basePath + "v" + version;
+        final String imageVersionPathKey = versionPath + "\\ImageVersion";
         final String installPathKey = versionPath + "\\Install Path";
 
         LOG.debug("Looking for Windows Phone SDK version "+ version +" at registry path HKLM\\"+ versionPath);
 
-        String fullVersion = this.registry.readRegistryText(Win32RegistryAccessor.Hive.LOCAL_MACHINE, Bitness.BIT32, versionPath, "Version");
+        // new SDKs (v7.1, v8.0) store version number in path \Image Version
+        String fullVersion = this.registry.readRegistryText(Win32RegistryAccessor.Hive.LOCAL_MACHINE, Bitness.BIT32, imageVersionPathKey, "");
         if (fullVersion == null) {
-            LOG.debug("Did not find Version key for Windows Phone SDK "+ version);
-            return null;
+
+            // old version number (v7.0 and v7.1) is stored in @Version key
+            fullVersion = this.registry.readRegistryText(Win32RegistryAccessor.Hive.LOCAL_MACHINE, Bitness.BIT32, versionPath, "Version");
+            if (fullVersion == null) {
+                LOG.debug("Did not find Version key for Windows Phone SDK "+ version);
+                return null;
+            }
         }
 
         String installPathValue = this.registry.readRegistryText(Win32RegistryAccessor.Hive.LOCAL_MACHINE, Bitness.BIT32, installPathKey, "Install Path");

@@ -6,6 +6,6 @@ based on the Microsoft SDKs installed on computer running the Build Agent.
 
 Supported Microsoft SDKs:
 
-* Windows Azure SDK (1.0 - 1.6)
-* Windows Phone SDK (7.0, 7.1)
+* Windows Azure SDK (1.0 - 1.8, 2.0)
+* Windows Phone SDK (7.0, 7.1, 8.0)
 * ASP.NET MVC (1.0 - 4)

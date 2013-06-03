@@ -28,14 +28,14 @@ public class AspnetMvcDetector extends SdkDetector {
 
     @Override
     public List<SdkVersion> detectSdkVersions(){
-        LOG.info("Looking for ASP.NET MVC installated on system.");
+        LOG.info("Looking for ASP.NET MVC installed on system.");
 
         if (LOG.isDebugEnabled()) {
             String[] names = new String[versions.size()];
             for (int i = 0; i < versions.size(); i++)
                 names[i] = versions.get(i).getFullVersion();
 
-            LOG.debug("Supported ASP.NET MVC versions: "+ combine(names, ", "));
+            LOG.debug("Supported ASP.NET MVC versions by this plugin: "+ combine(names, ", "));
         }
 
         List<SdkVersion> detectedVersions = new ArrayList<SdkVersion>();
