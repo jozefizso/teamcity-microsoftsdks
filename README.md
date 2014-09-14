@@ -31,3 +31,7 @@ Issue `mvn package` command from the root project to build your plugin. Resultin
 
 ### 3. Install
 To install the plugin, put zip archive to **plugins** directory under TeamCity data directory. If you only changed agent-side code of your plugin, the upgrade will be perfomed 'on the fly' (agents will upgrade when idle). If common or server-side code has changed, restart the server.
+
+## License
+
+Copyright (c) 2012-2014 Jozef Izso under [MIT License](LICENSE)
