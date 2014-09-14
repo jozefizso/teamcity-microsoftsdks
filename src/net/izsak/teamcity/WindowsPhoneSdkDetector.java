@@ -11,7 +11,7 @@ public class WindowsPhoneSdkDetector extends SdkDetector {
     private static final Logger LOG = Logger.getLogger(WindowsPhoneSdkDetector.class);
 
     final String basePath = "SOFTWARE\\Microsoft\\Microsoft SDKs\\WindowsPhone\\";
-    final String[] versionsToDetect = new String[] { "7.0", "7.1", "8.0" };
+    final String[] versionsToDetect = new String[] { "7.0", "7.1", "8.0", "8.1" };
 
     private Win32RegistryAccessor registry;
 
