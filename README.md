@@ -10,8 +10,6 @@ Supported Microsoft SDKs:
 * Windows Phone SDK (7.0, 7.1, 8.0. 8.1)
 * ASP.NET MVC (1.0 - 4)
 
-[Download Microsoft SDKs v1.3.3 plugin](http://code.izsak.net/github/teamcity-microsoftsdks/teamcity-microsoftsdks-v1.3.3.zip)
-
 
 ## Contributing
 
@@ -31,6 +29,12 @@ Issue `mvn package` command from the root project to build your plugin. Resultin
 
 ### 3. Install
 To install the plugin, put zip archive to **plugins** directory under TeamCity data directory. If you only changed agent-side code of your plugin, the upgrade will be perfomed 'on the fly' (agents will upgrade when idle). If common or server-side code has changed, restart the server.
+
+
+## Archived version
+
+This is old version of the plugin built for TeamCity 7.1.5: [Microsoft SDKs v1.3.3 plugin](http://code.izsak.net/github/teamcity-microsoftsdks/teamcity-microsoftsdks-v1.3.3.zip).
+
 
 ## License
 
