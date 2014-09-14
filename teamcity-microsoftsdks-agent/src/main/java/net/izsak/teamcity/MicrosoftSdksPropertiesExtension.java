@@ -23,12 +23,10 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
         events.addListener(this);
     }
 
-    @Override
     public String getOrderId() {
         return "MicrosoftSdks";
     }
 
-    @Override
     public PositionConstraint getConstraint() {
         return PositionConstraint.last();
     }
