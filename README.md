@@ -9,6 +9,7 @@ Supported Microsoft SDKs:
 * Windows Azure SDK (1.0 - 1.8, 2.0 - 2.4)
 * Windows Phone SDK (7.0, 7.1, 8.0. 8.1)
 * ASP.NET MVC (1.0 - 4)
+* Visual F# Tools SDK (3.1.2)
 
 
 ## Contributing
@@ -38,4 +39,4 @@ This is old version of the plugin built for TeamCity 7.1.5: [Microsoft SDKs v1.3
 
 ## License
 
-Copyright (c) 2012-2014 Jozef Izso under [MIT License](LICENSE)
+Copyright (c) 2012-2015 Jozef Izso under [MIT License](LICENSE)
