@@ -2,8 +2,8 @@ sudo: false
 language: java
 script: mvn test
 jdk:
-- oraclejdk7
-- openjdk7
+  - oraclejdk7
+  - openjdk7
 
 deploy:
   provider: releases
