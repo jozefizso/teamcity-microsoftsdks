@@ -1,6 +1,6 @@
 sudo: false
 language: java
-script: mvn test
+script: mvn test package
 jdk:
   - oraclejdk7
   - openjdk7
