@@ -2,5 +2,16 @@ sudo: false
 language: java
 script: mvn test
 jdk:
-  - oraclejdk7
-  - openjdk7
+- oraclejdk7
+- openjdk7
+
+deploy:
+  provider: releases
+  api_key:
+    secure: P21zgCNbT8scrN6PQVSNOowBUp6zsF/qh2SwGKtF5SudQ54u5Yk9ZxaDJRxNHxjDxfKcqa76k767ULfnKnVrfzg18t4Z+sO518CXDwXiKd6cIyWYOC0vQVgIjmzfloHyH3InGt3d2Kfh1roDSIy+q/Z7h/8V6UqTRXN/pRPq2II=
+  file: target/teamcity-microsoftsdks.zip
+  on:
+    repo: jozefizso/teamcity-microsoftsdks
+  skip_cleanup: true
+  on:
+    tags: true
