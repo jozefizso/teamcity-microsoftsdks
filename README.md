@@ -10,6 +10,8 @@ Supported Microsoft SDKs:
 * Windows Phone SDK (7.0, 7.1, 8.0. 8.1)
 * ASP.NET MVC (1.0 - 4)
 * Visual F# Tools SDK (3.1.2)
+* Microsoft Office applications (2007, 2010, 2013, 2016)
+  * Reported apps: Word, Excel, PowerPoint and Outlook
 
 
 ## Contributing
