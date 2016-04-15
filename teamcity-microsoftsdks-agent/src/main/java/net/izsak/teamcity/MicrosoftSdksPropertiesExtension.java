@@ -48,6 +48,7 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
         detectors.add(new WindowsPhoneSdkDetector(this.registry));
         detectors.add(new AspnetMvcDetector(this.registry));
         detectors.add(new FSharpDetector(this.registry));
+        detectors.add(new MicrosoftOfficeDetector(this.registry));
 
         for (SdkDetector detector : detectors) {
             List<SdkVersion> detectedVersions = detector.detectSdkVersions();
