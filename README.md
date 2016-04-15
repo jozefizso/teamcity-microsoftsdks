@@ -39,4 +39,4 @@ This is old version of the plugin built for TeamCity 7.1.5: [Microsoft SDKs v1.3
 
 ## License
 
-Copyright (c) 2012-2015 Jozef Izso under [MIT License](LICENSE)
+Copyright (c) 2012-2016 Jozef Izso under [MIT License](LICENSE)
