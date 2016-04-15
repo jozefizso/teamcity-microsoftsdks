@@ -4,7 +4,7 @@
   <parent>
     <artifactId>teamcity-microsoftsdks</artifactId>
     <groupId>teamcity</groupId>
-    <version>v2.2.2</version>
+    <version>2.3.0</version>
   </parent>
   <artifactId>teamcity-microsoftsdks-agent</artifactId>
   <packaging>jar</packaging>
@@ -13,7 +13,7 @@
     <dependency>
       <groupId>teamcity</groupId>
       <artifactId>teamcity-microsoftsdks-common</artifactId>
-      <version>v2.2.2</version>
+      <version>2.3.0</version>
       <scope>compile</scope>
     </dependency>
 
