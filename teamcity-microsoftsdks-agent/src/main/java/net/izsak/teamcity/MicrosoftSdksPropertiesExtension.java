@@ -49,12 +49,13 @@ public class MicrosoftSdksPropertiesExtension extends AgentLifeCycleAdapter impl
         detectors.add(new AspnetMvcDetector(this.registry));
         detectors.add(new FSharpDetector(this.registry));
         detectors.add(new MicrosoftOfficeDetector(this.registry));
+        detectors.add(new WindowsWdkDetector(this.registry));
 
         for (SdkDetector detector : detectors) {
             List<SdkVersion> detectedVersions = detector.detectSdkVersions();
             for (SdkVersion version : detectedVersions) {
                 config.addConfigurationParameter(version.getName(), version.getFullVersion());
-                config.addConfigurationParameter(version.getName() +"_Path", version.getPath());
+                config.addConfigurationParameter(version.getName() + "_Path", version.getPath());
             }
         }
     }
