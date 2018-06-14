@@ -26,6 +26,7 @@ public class WindowsWdkDetector extends SdkDetector {
         map.put("1703", "10.0.15063.0");
         map.put("1709", "10.0.16299.0");
         map.put("1803", "10.0.17134.0");
+        map.put("1903", "10.0.18362.0");
         return map;
     }
 
