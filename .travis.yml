@@ -2,7 +2,6 @@ sudo: false
 language: java
 script: mvn test package
 jdk:
-  - oraclejdk8
   - openjdk8
 
 cache:
@@ -19,4 +18,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    jdk: oraclejdk8
+    jdk: openjdk8
