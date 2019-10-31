@@ -6,6 +6,7 @@ based on the Microsoft SDKs installed on computer running the Build Agent.
 
 Supported Microsoft SDKs:
 
+* Windows 10 SDK (1607, 1703, 1709, 1803, 1903)
 * Windows Azure SDK (1.0 - 1.8, 2.0 - 2.9)
 * Windows Phone SDK (7.0, 7.1, 8.0. 8.1)
 * ASP.NET MVC (1.0 - 4)
@@ -41,4 +42,4 @@ This is old version of the plugin built for TeamCity 7.1.5: [Microsoft SDKs v1.3
 
 ## License
 
-Copyright (c) 2012-2016 Jozef Izso under [MIT License](LICENSE)
+Copyright (c) 2012-2019 Jozef Izso and contributors under [MIT License](LICENSE)
